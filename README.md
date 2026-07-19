@@ -49,3 +49,7 @@ The true intelligence of the system lies in its LangGraph state machine (`backen
 5. **Devil's Advocate (Fan-in)**: Once all specialists provide their initial opinions, the graph converges at the `Devil's Advocate`. This agent actively looks for logical flaws, contradictions, or missed rules in the specialists' opinions.
 6. **Debate Phase**: If the Devil's Advocate finds an issue, it targets specific agents, triggering the `Debate` node. The targeted agents formulate rebuttals, adjusting their confidence levels based on the critique. If no issues are found, the debate phase is bypassed.
 7. **Chief Referee**: Finally, all opinions, vote tallies, and debate outcomes converge at the `Chief Referee`. This ultimate authority synthesizes the information and declares the final refereeing decision.
+
+
+## Proof of deployment 
+![Proof of deployment](./client/public/assets/image.png)
