@@ -1,0 +1,36 @@
+stateDiagram-v2
+    %% Direction
+    direction TB
+
+    %% States
+    state "Incident Parser" as Parse
+    state "Reliability Agent" as Reliability
+    state "Coordinator Agent" as Coordinator
+    state "Devil's Advocate" as DevilsAdvocate
+    state "Debate Agent(s)" as Debate
+    state "Chief Referee" as ChiefReferee
+
+    %% Parallel Propose Round
+    state ProposeRound {
+        direction LR
+        state "Vision Expert" as Vision
+        state "Rules Expert" as Rules
+        state "Assistant Referee" as AsstRef
+        state "VAR (Video Asst)" as VAR
+    }
+
+    %% Flow
+    [*] --> Parse : Input (Text/Video)
+    Parse --> Reliability : Parsed Incident
+    Reliability --> Coordinator : Assessment
+    
+    Coordinator --> ProposeRound : Fan-out (Conditional based on Coordinator)
+    
+    ProposeRound --> DevilsAdvocate : Fan-in
+    
+    DevilsAdvocate --> Debate : Triggers Debate (If targeted)
+    Debate --> ChiefReferee : Fan-in 
+    
+    DevilsAdvocate --> ChiefReferee : Direct (If no debate)
+    
+    ChiefReferee --> [*] : Final Decision & Tally

@@ -1,0 +1,42 @@
+graph TD
+    %% Define Styles
+    classDef frontend fill:#3b82f6,stroke:#2563eb,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+    classDef backend fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+    classDef aiEngine fill:#8b5cf6,stroke:#7c3aed,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+    classDef external fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+    classDef client fill:#1e293b,stroke:#0f172a,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+
+    %% Nodes
+    User([User / Referee]):::client
+    
+    subgraph "Frontend (Client)"
+        UI["React/Vite Application<br/>(UI & File Upload)"]:::frontend
+    end
+
+    subgraph "Backend Server"
+        FastAPI["FastAPI Server"]:::backend
+        StaticFiles["Static Files<br/>(Uploads)"]:::backend
+        APIEndpoints["REST APIs<br/>(/api/upload, /api/evaluate_baseline)"]:::backend
+        WSEndpoint["WebSocket Server<br/>(/ws/evaluate)"]:::backend
+    end
+
+    subgraph "AI Core"
+        LangGraph["LangGraph Engine<br/>(StateGraph Workflow)"]:::aiEngine
+    end
+
+    subgraph "External Services"
+        LLM["LLMs / Vision Models<br/>(OpenAI, Anthropic, Qwen, etc.)"]:::external
+    end
+
+    %% Relationships
+    User -->|Uploads video/text & starts evaluation| UI
+    UI -->|HTTP POST| APIEndpoints
+    APIEndpoints -->|Saves Files| StaticFiles
+    UI -->|WebSocket Connection| WSEndpoint
+    WSEndpoint -->|Real-time Stream| UI
+    
+    WSEndpoint -->|Initializes State| LangGraph
+    LangGraph -->|Streams Node Updates (Messages)| WSEndpoint
+    
+    LangGraph -->|Prompts & Function Calls| LLM
+    LLM -->|Agent Responses| LangGraph
