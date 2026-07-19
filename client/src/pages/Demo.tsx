@@ -38,7 +38,7 @@ export default function Demo() {
           const formData = new FormData();
           formData.append("file", file);
 
-          const uploadRes = await fetch("http://localhost:8000/api/upload", {
+          const uploadRes = await fetch("/api/upload", {
             method: "POST",
             body: formData,
           });
@@ -62,7 +62,8 @@ export default function Demo() {
       }
     }
 
-    const wsUrl = `ws://localhost:8000/ws/evaluate`;
+    const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsUrl = `${wsProtocol}//${window.location.host}/ws/evaluate`;
 
     wsRef.current = new WebSocket(wsUrl);
 
