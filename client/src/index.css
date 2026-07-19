@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Inter:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -42,86 +41,52 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-sans: 'Gluten', sans-serif;
+  --font-sans: 'Inter', sans-serif;
 }
 
 :root {
-  --primary: #317E5E;
-  /* FIELD GREEN */
+  --primary: #5c6b45;
   --primary-foreground: #ffffff;
-  --sidebar-primary: #317E5E;
-  --sidebar-primary-foreground: #ffffff;
-  --chart-1: #317E5E;
-  --chart-2: #F15929;
-  /* KICKOFF ORANGE */
-  --chart-3: #AB6038;
-  /* FOOTBALL BROWN */
-  --chart-4: #3F5289;
-  /* PLAYBOOK NAVY */
-  --chart-5: #D50909;
-  /* RED ZONE */
-  --radius: 1.5rem;
-  --background: #F8FAFC;
-  /* Light gray/white */
-  --foreground: #3F5289;
-  /* PLAYBOOK NAVY */
+  --background: #f4f5f0;
+  --foreground: #141611;
   --card: #ffffff;
-  --card-foreground: #3F5289;
+  --card-foreground: #141611;
   --popover: #ffffff;
-  --popover-foreground: #3F5289;
-  --secondary: #F15929;
-  --secondary-foreground: #ffffff;
-  --muted: #E2E8F0;
-  --muted-foreground: #3F5289;
-  --accent: #AB6038;
-  --accent-foreground: #ffffff;
-  --destructive: #D50909;
+  --popover-foreground: #141611;
+  --secondary: #e5e7eb;
+  --secondary-foreground: #141611;
+  --muted: #f3f4f6;
+  --muted-foreground: #4b5563;
+  --accent: #e5e7eb;
+  --accent-foreground: #141611;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #3F5289;
+  --border: #d1d5db;
   --input: #ffffff;
-  --ring: #317E5E;
-  --sidebar: #ffffff;
-  --sidebar-foreground: #3F5289;
-  --sidebar-accent: #317E5E;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #3F5289;
-  --sidebar-ring: #317E5E;
+  --ring: #5c6b45;
+  --radius: 0.75rem;
 }
 
 .dark {
-  --primary: #317E5E;
-  --primary-foreground: #ffffff;
-  --sidebar-primary: #317E5E;
-  --sidebar-primary-foreground: #ffffff;
-  --background: #3F5289;
-  --foreground: #B8D3ED;
-  --card: #1E293B;
-  /* Dark navy */
-  --card-foreground: #B8D3ED;
-  --popover: #1E293B;
-  --popover-foreground: #B8D3ED;
-  --secondary: #F15929;
-  --secondary-foreground: #ffffff;
-  --muted: #334155;
-  --muted-foreground: #94A3B8;
-  --accent: #AB6038;
-  --accent-foreground: #ffffff;
-  --destructive: #D50909;
+  --primary: #d4ed31;
+  --primary-foreground: #000000;
+  --background: #141611;
+  --foreground: #f4f5f0;
+  --card: #1c1e18;
+  --card-foreground: #f4f5f0;
+  --popover: #1c1e18;
+  --popover-foreground: #f4f5f0;
+  --secondary: #2a2f24;
+  --secondary-foreground: #f4f5f0;
+  --muted: #2a2f24;
+  --muted-foreground: #9ca3af;
+  --accent: #2a2f24;
+  --accent-foreground: #f4f5f0;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #475569;
-  --input: #1E293B;
-  --ring: #317E5E;
-  --chart-1: #317E5E;
-  --chart-2: #F15929;
-  --chart-3: #AB6038;
-  --chart-4: #B8D3ED;
-  --chart-5: #D50909;
-  --sidebar: #1E293B;
-  --sidebar-foreground: #B8D3ED;
-  --sidebar-accent: #317E5E;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #475569;
-  --sidebar-ring: #317E5E;
+  --border: #2a2f24;
+  --input: #1c1e18;
+  --ring: #d4ed31;
 }
 
 @layer base {
@@ -131,26 +96,14 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Gluten', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-style: normal;
   }
 
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Chewy', system-ui;
-    letter-spacing: 0.05em;
-    font-weight: 400;
-  }
-
-  h1,
-  h2 {
-    text-align: center;
-    color: var(--destructive);
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    font-weight: 700;
   }
 
   button:not(:disabled),
