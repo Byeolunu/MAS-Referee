@@ -87,7 +87,7 @@ export default function Home() {
             </div>
 
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3 font-bold tracking-widest text-lg">
-              <span className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center text-sm shadow-md">⚽</span>
+              <span className="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center text-sm shadow-md"><img src="/assets/football.png" className="h-full object-contain" alt="AI Agent" /></span>
               <span className="hidden sm:block">AI REFEREE <span className="font-normal text-white/80">CREW</span></span>
             </div>
 
