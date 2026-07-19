@@ -7,36 +7,36 @@ graph TD
     classDef client fill:#1e293b,stroke:#0f172a,stroke-width:2px,color:#fff,rx:5px,ry:5px;
 
     %% Nodes
-    User([User / Referee]):::client
+    User(["User / Referee"]):::client
     
-    subgraph "Frontend (Client)"
+    subgraph Frontend["Frontend (Client)"]
         UI["React/Vite Application<br/>(UI & File Upload)"]:::frontend
     end
 
-    subgraph "Backend Server"
+    subgraph Backend["Backend Server"]
         FastAPI["FastAPI Server"]:::backend
         StaticFiles["Static Files<br/>(Uploads)"]:::backend
         APIEndpoints["REST APIs<br/>(/api/upload, /api/evaluate_baseline)"]:::backend
         WSEndpoint["WebSocket Server<br/>(/ws/evaluate)"]:::backend
     end
 
-    subgraph "AI Core"
+    subgraph AICore["AI Core"]
         LangGraph["LangGraph Engine<br/>(StateGraph Workflow)"]:::aiEngine
     end
 
-    subgraph "External Services"
-        LLM["LLMs / Vision Models<br/>(OpenAI, Anthropic, Qwen, etc.)"]:::external
+    subgraph External["External Services"]
+        LLM["LLMs / Vision Models<br/>(Qwen)"]:::external
     end
 
     %% Relationships
-    User -->|Uploads video/text & starts evaluation| UI
-    UI -->|HTTP POST| APIEndpoints
-    APIEndpoints -->|Saves Files| StaticFiles
-    UI -->|WebSocket Connection| WSEndpoint
-    WSEndpoint -->|Real-time Stream| UI
+    User -->|"Uploads video/text & starts evaluation"| UI
+    UI -->|"HTTP POST"| APIEndpoints
+    APIEndpoints -->|"Saves Files"| StaticFiles
+    UI -->|"WebSocket Connection"| WSEndpoint
+    WSEndpoint -->|"Real-time Stream"| UI
     
-    WSEndpoint -->|Initializes State| LangGraph
-    LangGraph -->|Streams Node Updates (Messages)| WSEndpoint
+    WSEndpoint -->|"Initializes State"| LangGraph
+    LangGraph -->|"Streams Node Updates (Messages)"| WSEndpoint
     
-    LangGraph -->|Prompts & Function Calls| LLM
-    LLM -->|Agent Responses| LangGraph
+    LangGraph -->|"Prompts & Function Calls"| LLM
+    LLM -->|"Agent Responses"| LangGraph
